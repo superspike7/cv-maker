@@ -1,4 +1,4 @@
-import Profile from "./Profile.js"
+import Profile from "./Profile"
 
 function Preview(props) {
   const { profile } = props;

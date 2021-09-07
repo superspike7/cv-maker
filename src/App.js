@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Preview from "./components/Preview"
+import Profile from "./components/Profile"
 
 class App extends Component {
   constructor(props){
@@ -21,7 +21,7 @@ class App extends Component {
     const { profile } = this.state
     return (
     <div>
-      <Preview profile={profile}/>
+      <Profile profile={profile}/>
     </div>
     );
   } 
