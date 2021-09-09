@@ -1,36 +1,36 @@
-import { useState } from "react";
+import React from "react";
 
-function Profile(props) {
-  const { profile } = props;
-  const links = profile.links;
-  const [isEditable, toggleIsEditable] = useState()
-  if (!isEditable){
-    return (
-      <div className="h-32 bg-blue-800 text-white flex flex-col items-center justify-center relative">
-        <button onClick={() => toggleIsEditable(!isEditable)} className="absolute top-1 left-1 rounded-md px-1 bg-green-400">edit</button>
-        <h1 className="font-extrabold text-4xl py-2">{profile.name}</h1>
-        <ul className="font-light flex justify-center gap-x-4">
-          {links.map((link, index) => {
-            return <li key={index}>{link}</li>
-          })}
-        </ul>
-      </div>
-    );
-  } else if (isEditable) {
-    return (
-      <div className="h-32 bg-blue-800 text-white flex flex-col items-center justify-center relative">
-        <button onClick={() => toggleIsEditable(!isEditable)} className="absolute top-1 left-1 rounded-md px-1 bg-green-400">edit</button>
-        <form>
-          <input type="text" value={profile.name}></input>
-        </form>
-        <ul className="font-light flex justify-center gap-x-4">
-          {links.map((link, index) => {
-            return <li key={index}>{link}</li>
-          })}
-        </ul>
-      </div>
+class Profile extends React.Component{
+  constructor(props){
+    super(props);
 
-    );
+    this.state = {
+      name: "Spike Vinz Cruz",
+      title: "Web Developer",
+      address: "Liloy, Zamboanga del Norte, Philippines",
+      links: [
+        {name: "Github", url: "https://github.com/superspike7"},
+        {name: "Twitter", url: "https://github.com/superspike7"},
+      ]
+    }
   }
+
+  render(){
+    const links = this.state.links.map((link, index) => {
+      return <li key={index}>
+        <a href={link.url}>{link.name}</a>
+      </li>
+    })
+    return (
+      <div className="py-4 bg-blue-800 text-white flex flex-col items-center justify-center relative gap-2">
+        <h1 className="font-extrabold text-4xl">{this.state.name}</h1>
+        <h3 className="font-normal text-xl">{this.state.title}</h3>
+        <p className="font-light text-xl">{this.state.address}</p>
+        <ul className="flex gap-4">
+          {links}
+        </ul>
+      </div>
+    );
+   }
 }
 export default Profile;
