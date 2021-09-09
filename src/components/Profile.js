@@ -1,4 +1,6 @@
 import React from "react";
+import ProfileView from "./ProfileView";
+import ProfileEdit from "./ProfileEdit";
 
 class Profile extends React.Component{
   constructor(props){
@@ -8,28 +10,36 @@ class Profile extends React.Component{
       name: "Spike Vinz Cruz",
       title: "Web Developer",
       address: "Liloy, Zamboanga del Norte, Philippines",
-      links: [
-        {name: "Github", url: "https://github.com/superspike7"},
-        {name: "Twitter", url: "https://github.com/superspike7"},
-      ]
     }
+
+    this.handleInput = this.handleInput.bind(this);
+  }
+
+  handleInput(event){
+    const name = event.target.name
+    const value = event.target.value
+
+    this.setState({
+      [name]: value
+    })
   }
 
   render(){
-    const links = this.state.links.map((link, index) => {
-      return <li key={index}>
-        <a href={link.url}>{link.name}</a>
-      </li>
-    })
+    const { name, title, address} = this.state
     return (
-      <div className="py-4 bg-blue-800 text-white flex flex-col items-center justify-center relative gap-2">
-        <h1 className="font-extrabold text-4xl">{this.state.name}</h1>
-        <h3 className="font-normal text-xl">{this.state.title}</h3>
-        <p className="font-light text-xl">{this.state.address}</p>
-        <ul className="flex gap-4">
-          {links}
-        </ul>
-      </div>
+    <div className="py-4 bg-blue-800 text-white flex flex-col items-center justify-center relative gap-2">
+        <ProfileView
+         name={name}
+         title={title}
+         address={address}/>
+        <ProfileEdit
+         name={name}
+         title={title} 
+         address={address}
+         handleInput={this.handleInput}/>
+
+    </div>
+
     );
    }
 }
