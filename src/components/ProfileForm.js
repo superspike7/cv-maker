@@ -14,30 +14,40 @@ function ProfileForm(props) {
 
   return (
     <form
-      className="p-4 w-1/2 mx-auto flex flex-col bg-blue-500 text-white gap-3"
+      className="p-4 w-1/2 mx-auto flex flex-col bg-blue-500 gap-3"
       onSubmit={props.handleSubmit(profile)}
     >
-      <input
-        type="text"
-        name="name"
-        value={profile.name}
-        onChange={handleInput}
-        className="text-4xl bg-transparent border text-center border-green-400"
-      ></input>
-      <input
-        type="text"
-        name="title"
-        value={profile.title}
-        onChange={handleInput}
-        className="text-xl bg-transparent border text-center border-green-400"
-      ></input>
-      <input
-        type="text"
-        name="address"
-        value={profile.address}
-        onChange={handleInput}
-        className="text-xl bg-transparent border text-center border-green-400"
-      ></input>
+      <h1 className="text-center">Profile</h1>
+      <div className="flex flex-col">
+        <label for="name">name</label>
+        <input
+          type="text"
+          name="name"
+          value={profile.name}
+          onChange={handleInput}
+          className="text-xl border border-green-400"
+        ></input>
+      </div>
+      <div className="flex flex-col">
+        <label for="title">title</label>
+        <input
+          type="text"
+          name="title"
+          value={profile.title}
+          onChange={handleInput}
+          className="text-xl border border-green-400"
+        ></input>
+      </div>
+      <div className="flex flex-col">
+        <label for="address">address</label>
+        <input
+          type="text"
+          name="address"
+          value={profile.address}
+          onChange={handleInput}
+          className="text-xl border border-green-400"
+        ></input>
+      </div>
       <button className="px-1 bg-yellow-500 text-black rounded-md">
         save
       </button>
