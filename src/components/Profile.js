@@ -10,11 +10,9 @@ class Profile extends React.Component {
       name: "Spike Vinz Cruz",
       title: "Web Developer",
       address: "Liloy, Zamboanga del Norte, Philippines",
-      edit: false,
     };
 
     this.handleInput = this.handleInput.bind(this);
-    this.toggleEdit = this.toggleEdit.bind(this)
   }
 
   handleInput(event) {
@@ -26,19 +24,13 @@ class Profile extends React.Component {
     });
   }
 
-  toggleEdit(){
-    this.setState(preveState => ({
-      edit: !preveState.edit
-    }));
-  }
 
   render() {
     const { name, title, address } = this.state;
-    const editMode = this.state.edit;
+    const mode = this.props.mode;
     return (
       <div className="py-4 bg-blue-800 text-white flex flex-col items-center justify-center relative gap-2 relative">
-        <button className="absolute px-1 bg-yellow-400 -top-2 -left-2" onClick={this.toggleEdit}>{this.state.edit ? "Done" : "Edit"}</button>
-        {editMode ? (
+        {mode === "edit" ? (
           <ProfileEdit
             name={name}
             title={title}

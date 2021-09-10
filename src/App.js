@@ -1,5 +1,12 @@
 import React, {Component} from "react";
-import Profile from "./components/Profile"
+import ProfileView from "./components/ProfileView";
+import ProfileForm from "./components/ProfileForm" 
+
+const PROFILE = {
+    name: "Spike Vinz Cruz",
+    title: "Web Developer",
+    address: "Liloy, Zamboanga del Norte, Philippines",
+}
 
 class App extends Component {
   render(){
@@ -7,11 +14,14 @@ class App extends Component {
     <div>
       <h1 className="py-8 text-center text-4xl font-bold">CV maker</h1>
       <div className="w-[80vw] mx-auto shadow-2xl">
-        <Profile/>
+        <ProfileForm/>
+        <br></br>
+        <ProfileView profile={PROFILE}/>
       </div>
     </div>
     );
   } 
 }
+
 
 export default App;
