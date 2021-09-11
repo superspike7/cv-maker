@@ -57,10 +57,10 @@ class App extends Component {
         <h1 className="py-8 text-center text-4xl font-bold">CV maker</h1>
         <div className="w-[80vw] mx-auto shadow-2xl">
           {/* <ProfileForm handleSubmit={this.handleProfileChange} /> */}
-          <Experience/>
+          <Experience handleChange={this.handleExperienceChange}/>
           <br></br>
-          {/* <ProfileView profile={this.state.profile} /> */}
-          {/* <ExperienceView experience={this.state.experience} /> */}
+          <ProfileView profile={this.state.profile} />
+          <ExperienceView experience={this.state.experience} />
         </div>
       </div>
     );

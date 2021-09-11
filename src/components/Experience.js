@@ -53,7 +53,7 @@ function Experience(props) {
           +
         </button>
       </div>
-      <button className="bg-green-500 text-white px-1 rounded-md" >
+      <button className="bg-green-500 text-white px-1 rounded-md" onClick={props.handleChange(experiences)}>
         update
       </button>
     </div>
