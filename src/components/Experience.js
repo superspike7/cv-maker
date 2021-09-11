@@ -2,27 +2,25 @@ import { useState } from "react";
 import ExperienceForm from "./ExperienceForm";
 
 function Experience(props) {
-  const [experiences, setExperiences] = useState([
-    {
-      company: "AirBnB",
-      role: "Backend Engineer",
-      date_start: "08-08-18",
-      date_end: "current",
-      location: "Manila, PH",
-      responsibility: "I built the entire thing",
-      tech_stack: "Ruby on Rails",
-    },
-  ]);
+  const [experiences, setExperiences] = useState([]);
+
+  const [toggleForm, setToggleForm] = useState(false)
 
   function handleSubmit(event, data) {
     event.preventDefault();
     console.log(data);
     setExperiences([...experiences, data]);
+    handleToggleForm()
   }
 
   function handleRemove(event) {
     const index = event.target.value;
     setExperiences(experiences.filter(experience => experiences[index] !== experience))
+  }
+
+  function handleToggleForm(){
+    console.log(toggleForm)
+    setToggleForm(prevToggleForm => !prevToggleForm)
   }
 
   const experienceCards = experiences.map((exp, index) => {
@@ -48,14 +46,14 @@ function Experience(props) {
   return (
     <div className="p-4 w-1/2 mx-auto flex flex-col bg-blue-300 gap-3">
       <h1 className="text-2xl font-bold text-center">Experience</h1>
-      <ExperienceForm handleSubmit={handleSubmit} />
+      {toggleForm ? <ExperienceForm handleSubmit={handleSubmit} /> : ""}
       <div className="flex flex-col gap-4">
         {experienceCards}
-        <button className="bg-blue-400 border-2 border-black text-2xl ">
+        <button className="bg-blue-400 border-2 border-black text-2xl" onClick={handleToggleForm}>
           +
         </button>
       </div>
-      <button className="bg-green-500 text-white px-1 rounded-md">
+      <button className="bg-green-500 text-white px-1 rounded-md" >
         update
       </button>
     </div>
