@@ -11,22 +11,18 @@ function Experience(props) {
       location: "Manila, PH",
       responsibility: "I built the entire thing",
       tech_stack: "Ruby on Rails",
-    }
+    },
   ]);
 
-  // function handleAdd(data){
-  //   return (event) => {
-  //     event.preventDefault();
-  //     console.log(data);
-  //     setExperiences({
-  //       experiences: experiences.concat(data)
-  //     });
-  //   };
-  // }
-  function handleSubmit(event, data){
-    event.preventDefault()
-    console.log(data)
-    setExperiences([...experiences, data])
+  function handleSubmit(event, data) {
+    event.preventDefault();
+    console.log(data);
+    setExperiences([...experiences, data]);
+  }
+
+  function handleRemove(event) {
+    const index = event.target.value;
+    setExperiences(experiences.filter(experience => experiences[index] !== experience))
   }
 
   const experienceCards = experiences.map((exp, index) => {
@@ -39,7 +35,10 @@ function Experience(props) {
         <p>location: {exp.location}</p>
         <p>responsibility: {exp.responsibility}</p>
         <p>tech stack: {exp.tech_stack}</p>
-        <button className="mx-auto block bg-red-500 text-white px-2 absolute -top-2 -right-2 font-black rounded-full">
+        <button
+          className="mx-auto block bg-red-500 text-white px-2 absolute -top-2 -right-2 font-black rounded-full"
+          onClick={handleRemove} value={index}
+        >
           X
         </button>
       </div>
@@ -49,7 +48,7 @@ function Experience(props) {
   return (
     <div className="p-4 w-1/2 mx-auto flex flex-col bg-blue-300 gap-3">
       <h1 className="text-2xl font-bold text-center">Experience</h1>
-      <ExperienceForm handleSubmit={handleSubmit}/>
+      <ExperienceForm handleSubmit={handleSubmit} />
       <div className="flex flex-col gap-4">
         {experienceCards}
         <button className="bg-blue-400 border-2 border-black text-2xl ">
