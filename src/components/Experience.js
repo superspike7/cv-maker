@@ -11,16 +11,23 @@ function Experience(props) {
       location: "Manila, PH",
       responsibility: "I built the entire thing",
       tech_stack: "Ruby on Rails",
-    },
+    }
   ]);
 
-  // function handleInput(event){
-  //   const {name, value} = event.target
-  //   setProfile(prevState => ({
-  //     ...prevState,
-  //     [name]:value
-  //   }))
+  // function handleAdd(data){
+  //   return (event) => {
+  //     event.preventDefault();
+  //     console.log(data);
+  //     setExperiences({
+  //       experiences: experiences.concat(data)
+  //     });
+  //   };
   // }
+  function handleSubmit(event, data){
+    event.preventDefault()
+    console.log(data)
+    setExperiences([...experiences, data])
+  }
 
   const experienceCards = experiences.map((exp, index) => {
     return (
@@ -42,7 +49,7 @@ function Experience(props) {
   return (
     <div className="p-4 w-1/2 mx-auto flex flex-col bg-blue-300 gap-3">
       <h1 className="text-2xl font-bold text-center">Experience</h1>
-      <ExperienceForm/>
+      <ExperienceForm handleSubmit={handleSubmit}/>
       <div className="flex flex-col gap-4">
         {experienceCards}
         <button className="bg-blue-400 border-2 border-black text-2xl ">

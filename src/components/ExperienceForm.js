@@ -2,7 +2,17 @@ import { useState } from "react";
 
 function ExperienceForm(props) {
 
-  const [experience, setExperience] = useState({})
+  const [experience, setExperience] = useState(
+    {
+      company: "AirBnB",
+      role: "Backend Engineer",
+      date_start: "08-08-18",
+      date_end: "current",
+      location: "Manila, PH",
+      responsibility: "I built the entire thing",
+      tech_stack: "Ruby on Rails",
+    }
+  )
 
   function handleInput(event){
     const {name, value} = event.target
@@ -12,15 +22,11 @@ function ExperienceForm(props) {
     }))
   }
 
-  function handleSubmit(event){
-    event.preventDefault()
-    console.log(experience)
-  }
 
   return (
     <form
       className="p-4 w-full flex flex-col bg-blue-500 gap-1"
-      onSubmit={(e) => handleSubmit(e, experience)}
+      onSubmit={(e) => props.handleSubmit(e, experience)}
     >
       <h1 className="text-center">Experience</h1>
 
@@ -62,7 +68,7 @@ function ExperienceForm(props) {
         <input
           type="text"
           name="date_end"
-          value={experience.end}
+          value={experience.date_end}
           onChange={handleInput}
           className="text-xl border border-green-400"
         ></input>
