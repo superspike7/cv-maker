@@ -19,7 +19,7 @@ function ProfileForm(props) {
     >
       <h1 className="text-center">Profile</h1>
       <div className="flex flex-col">
-        <label for="name">name</label>
+        <label htmlFor="name">name</label>
         <input
           type="text"
           name="name"
@@ -29,7 +29,7 @@ function ProfileForm(props) {
         ></input>
       </div>
       <div className="flex flex-col">
-        <label for="title">title</label>
+        <label htmlFor="title">title</label>
         <input
           type="text"
           name="title"
@@ -39,7 +39,7 @@ function ProfileForm(props) {
         ></input>
       </div>
       <div className="flex flex-col">
-        <label for="address">address</label>
+        <label htmlFor="address">address</label>
         <input
           type="text"
           name="address"

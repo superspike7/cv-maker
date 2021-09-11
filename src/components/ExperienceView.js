@@ -11,7 +11,7 @@ function ExperienceView(props){
           <h3 className="font-normal text-xl">{experience.role}</h3>
           <ul className="list-disc">
             <li><p className="font-light text-xl">{experience.tasks}</p></li>
-            <li><p className="font-light text-xl">stack used: {experience.stack}</p></li>
+            <li><p className="font-light text-xl">stack used: {experience.tech_stack}</p></li>
           </ul>
         </div>
       </div>

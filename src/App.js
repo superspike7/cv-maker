@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ProfileView from "./components/ProfileView";
 import ProfileForm from "./components/ProfileForm";
 import ExperienceView from "./components/ExperienceView";
+import Experience from "./components/Experience";
 
 class App extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class App extends Component {
           date_end: "current",
           location: "Manila, PH",
           tasks: "I built the entire thing",
-          techStack: "Ruby on Rails"
+          tech_stack: "Ruby on Rails"
         },
       ],
     };
@@ -55,11 +56,11 @@ class App extends Component {
       <div>
         <h1 className="py-8 text-center text-4xl font-bold">CV maker</h1>
         <div className="w-[80vw] mx-auto shadow-2xl">
-          <ProfileForm handleSubmit={this.handleProfileChange} />
-          {/* <ExperienceForm handleSubmit={this.handleProfileChange}/> */}
+          {/* <ProfileForm handleSubmit={this.handleProfileChange} /> */}
+          <Experience/>
           <br></br>
-          <ProfileView profile={this.state.profile} />
-          <ExperienceView experience={this.state.experience} />
+          {/* <ProfileView profile={this.state.profile} /> */}
+          {/* <ExperienceView experience={this.state.experience} /> */}
         </div>
       </div>
     );
