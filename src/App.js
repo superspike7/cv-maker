@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import ProfileView from "./components/ProfileView";
 import ProfileForm from "./components/ProfileForm";
 import ExperienceView from "./components/ExperienceView";
+import EducationView from "./components/EducationView";
 import Experience from "./components/Experience";
+import Education from "./components/Education";
+
 
 class App extends Component {
   constructor(props) {
@@ -10,25 +13,17 @@ class App extends Component {
 
     this.state = {
       profile: {
-        name: "Spike Vinz Cruz",
+        name: "John Doe",
         title: "Web Developer",
-        address: "Liloy, Zamboanga del Norte, Philippines",
+        address: "San Fransico, CA",
       },
-      experience: [
-        {
-          company: "AirBnB",
-          role: "Backend Engineer",
-          date_start: "08-08-18",
-          date_end: "current",
-          location: "Manila, PH",
-          tasks: "I built the entire thing",
-          tech_stack: "Ruby on Rails"
-        },
-      ],
+      experience: [],
+      education: []
     };
 
     this.handleProfileChange = this.handleProfileChange.bind(this);
-    this.handleExperienceChange = this.handleExperience.bind(this);
+    this.handleExperienceChange = this.handleExperienceChange.bind(this);
+    this.handleEducationChange = this.handleEducationChange.bind(this);
   }
 
   handleProfileChange(data) {
@@ -41,12 +36,22 @@ class App extends Component {
     };
   }
 
-  handleExperience(data) {
+  handleExperienceChange(data) {
     return (event) => {
       event.preventDefault();
       console.log(data);
       this.setState({
-        experience: data,
+        experience: data
+      });
+    };
+  }
+
+  handleEducationChange(data) {
+    return (event) => {
+      event.preventDefault();
+      console.log(data);
+      this.setState({
+        education: data
       });
     };
   }
@@ -55,12 +60,13 @@ class App extends Component {
     return (
       <div>
         <h1 className="py-8 text-center text-4xl font-bold">CV maker</h1>
-        <div className="w-[80vw] mx-auto shadow-2xl">
-          {/* <ProfileForm handleSubmit={this.handleProfileChange} /> */}
+          <ProfileForm handleSubmit={this.handleProfileChange}/>
           <Experience handleChange={this.handleExperienceChange}/>
-          <br></br>
+          <Education handleChange={this.handleEducationChange}/>
+        <div className="w-[80vw] mx-auto shadow-2xl mt-8 p-2">
           <ProfileView profile={this.state.profile} />
           <ExperienceView experience={this.state.experience} />
+          <EducationView education={this.state.education} />
         </div>
       </div>
     );

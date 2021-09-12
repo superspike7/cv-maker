@@ -1,22 +1,21 @@
 import { useState } from "react";
 
-function ExperienceForm(props) {
+function EducationForm(props) {
 
-  const [experience, setExperience] = useState(
+  const [education, setEducation] = useState(
     {
-      company: "AirBnB",
-      role: "Backend Engineer",
-      date_start: "August 19, 2015",
-      date_end: "Current",
-      location: "San Fransico, CA",
-      responsibility: "I write the backedn",
-      tech_stack: "Ruby on Rails, React, Vue, TailwindCSS",
+      school: "MIT",
+      degree: "Computer Science",
+      date_start: "08-08-18",
+      date_end: "current",
+      location: "Manila, PH",
+      gpa: "3.9/4",
     }
   )
 
   function handleInput(event){
     const {name, value} = event.target
-    setExperience(prevState => ({
+    setEducation(prevState => ({
       ...prevState,
       [name]:value
     }))
@@ -26,30 +25,28 @@ function ExperienceForm(props) {
   return (
     <form
       className="p-4 w-full flex flex-col bg-blue-500 gap-1"
-      onSubmit={(e) => props.handleSubmit(e, experience)}
+      onSubmit={(e) => props.handleSubmit(e, education)}
     >
-      <h1 className="text-center">Experience</h1>
+      <h1 className="text-center">Education</h1>
 
       <div className="flex flex-col">
-        <label htmlFor="name">company</label>
+        <label htmlFor="name">School</label>
         <input
           type="text"
           name="company"
-          value={experience.company}
+          value={education.school}
           onChange={handleInput}
-          placeholder="AirBnB"
           className="text-xl border border-green-400"
         ></input>
       </div>
 
       <div className="flex flex-col">
-        <label htmlFor="title">role</label>
+        <label htmlFor="title">degree</label>
         <input
           type="text"
           name="role"
-          value={experience.role}
+          value={education.degree}
           onChange={handleInput}
-          placeholder="Backend Engineer"
           className="text-xl border border-green-400"
         ></input>
       </div>
@@ -59,9 +56,8 @@ function ExperienceForm(props) {
         <input
           type="text"
           name="date_start"
-          value={experience.date_start}
+          value={education.date_start}
           onChange={handleInput}
-          placeholder="08-19-2015"
           className="text-xl border border-green-400"
         ></input>
       </div>
@@ -71,9 +67,8 @@ function ExperienceForm(props) {
         <input
           type="text"
           name="date_end"
-          value={experience.date_end}
+          value={education.date_end}
           onChange={handleInput}
-          placeholder="current"
           className="text-xl border border-green-400"
         ></input>
       </div>
@@ -83,33 +78,19 @@ function ExperienceForm(props) {
         <input
           type="text"
           name="location"
-          value={experience.location}
+          value={education.location}
           onChange={handleInput}
-          placeholder="San Fransico, CA"
           className="text-xl border border-green-400"
         ></input>
       </div>
 
       <div className="flex flex-col">
-        <label htmlFor="address">responsibility</label>
+        <label htmlFor="address">GPA</label>
         <input
           type="text"
           name="responsibility"
-          value={experience.responsibility}
+          value={education.gpa}
           onChange={handleInput}
-          placeholder="I work with the backend"
-          className="text-xl border border-green-400"
-        ></input>
-      </div>
-
-      <div className="flex flex-col">
-        <label htmlFor="address">tech stack</label>
-        <input
-          type="text"
-          name="tech_stack"
-          value={experience.tech_stack}
-          onChange={handleInput}
-          placeholder="Ruby on Rails, React, Tailwind, etc..."
           className="text-xl border border-green-400"
         ></input>
       </div>
@@ -121,4 +102,4 @@ function ExperienceForm(props) {
   );
 }
 
-export default ExperienceForm 
+export default EducationForm 
